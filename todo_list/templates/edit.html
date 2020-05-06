@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+To-do List | Edit Item
+{% endblock %}
+{% block content %}
+{% if item %}
+{{ item.item }}
+<form class="form-inline my-2 my-lg-0" method="POST">
+    {% csrf_token %}
+    <label class="sr-only" for="inlineFormInputName2">{{ item.item }}</label>
+    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="{{ item.item }}"
+        value="{{ item.item }}" name="item">
+    <button type="submit" class="btn btn-primary mb-2">Edit Item</button>
+    <input type="hidden" value="{{ item.completed }}" name="{{ item.completed }}">
+</form>
+{% endif %}
+{% endblock %}
